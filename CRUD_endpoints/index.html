@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>CRUD - Lab 3</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Lab 3</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Общая информация</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">CRUD</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Domain/" class="nav-link">Домен</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Model/" class="nav-link">Модель</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Statistics/" class="nav-link">Statistics</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../practice_3.1/" class="nav-link">Практика 3.1</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../practice_3.2/" class="nav-link">Практика 3.2</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../Domain/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#crud" class="nav-link">CRUD</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#diet" class="nav-link">Diet</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#breed" class="nav-link">Breed</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#chicken" class="nav-link">Chicken</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#staff" class="nav-link">Staff</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cage" class="nav-link">Cage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#facility" class="nav-link">Facility</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="crud">CRUD</h1>
+<p>Endpoints доступны всем <strong>авторизованным</strong> пользователям при помощи Auth token 
+(заголовок <em>Authorization: Token {your token}</em>)</p>
+<h2 id="diet">Diet</h2>
+<ul>
+<li><code>POST /diets</code> - создание</li>
+<li><code>GET /diets</code> - получение всех объектов</li>
+<li><code>GET /diets/{id}</code> - получение конкретного объекта</li>
+<li><code>PUT /diets/{id}</code> - изменение конкретного объекта</li>
+<li><code>DELETE /diets/{id}</code> - удаление конкретного объекта</li>
+</ul>
+<p>Модель данных объекта:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Default diet&quot;,
+    &quot;content&quot;: &quot;Zerno&quot;
+}
+</code></pre>
+<h2 id="breed">Breed</h2>
+<ul>
+<li><code>POST /breeds</code> - создание</li>
+<li><code>GET /breeds</code> - получение всех объектов</li>
+<li><code>GET /breeds/{id}</code> - получение конкретного объекта</li>
+<li><code>PUT /breeds/{id}</code> - изменение конкретного объекта</li>
+<li><code>DELETE /breeds/{id}</code> - удаление конкретного объекта</li>
+</ul>
+<p>Модель данных объекта:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Default&quot;,
+    &quot;average_monthly_egg_rate&quot;: 5,
+    &quot;average_weight&quot;: 5,
+    &quot;recommended_diet&quot;: 2
+}
+</code></pre>
+<h2 id="chicken">Chicken</h2>
+<ul>
+<li><code>POST /chickens</code> - создание</li>
+<li><code>GET /chickens</code> - получение всех объектов</li>
+<li><code>GET /chickens/{id}</code> - получение конкретного объекта</li>
+<li><code>PUT /chickens/{id}</code> - изменение конкретного объекта</li>
+<li><code>DELETE /chickens/{id}</code> - удаление конкретного объекта</li>
+</ul>
+<p>Модель данных объекта:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: 1,
+    &quot;weight&quot;: 1,
+    &quot;birth_date&quot;: &quot;2023-11-28&quot;,
+    &quot;monthly_egg_rate&quot;: 5,
+    &quot;breed&quot;: 1,
+    &quot;cage&quot;: 1
+}
+</code></pre>
+<h2 id="staff">Staff</h2>
+<ul>
+<li><code>POST /staff</code> - создание</li>
+<li><code>GET /staff</code> - получение всех объектов</li>
+<li><code>GET /staff/{id}</code> - получение конкретного объекта</li>
+<li><code>PUT /staff/{id}</code> - изменение конкретного объекта</li>
+<li><code>DELETE /staff/{id}</code> - удаление конкретного объекта</li>
+</ul>
+<p>Модель данных объекта:</p>
+<pre><code class="language-json">{
+    &quot;username&quot;: &quot;janill&quot;,
+    &quot;role&quot;: &quot;Worker&quot;,
+    &quot;passport&quot;: &quot;1234&quot;,
+    &quot;salary&quot;: 1,
+    &quot;employment_contract_id&quot;: 1,
+    &quot;dismissal_agreement_id&quot;: 1
+}
+</code></pre>
+<h2 id="cage">Cage</h2>
+<ul>
+<li><code>POST /cages</code> - создание</li>
+<li><code>GET /cages</code> - получение всех объектов</li>
+<li><code>GET /cages/{id}</code> - получение конкретного объекта</li>
+<li><code>PUT /cages/{id}</code> - изменение конкретного объекта</li>
+<li><code>DELETE /cages/{id}</code> - удаление конкретного объекта</li>
+</ul>
+<p>Модель данных объекта:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: 1,
+    &quot;facility&quot;: {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;Main&quot;,
+        &quot;_longitude&quot;: 89.0,
+        &quot;_latitude&quot;: 89.0
+    },
+    &quot;responsible&quot;: {
+        &quot;username&quot;: &quot;janill&quot;,
+        &quot;role&quot;: &quot;Worker&quot;,
+        &quot;passport&quot;: &quot;1234&quot;,
+        &quot;salary&quot;: 1,
+        &quot;employment_contract_id&quot;: 1,
+        &quot;dismissal_agreement_id&quot;: 1
+    },
+    &quot;row&quot;: 1,
+    &quot;column&quot;: 1
+}
+</code></pre>
+<h2 id="facility">Facility</h2>
+<ul>
+<li><code>POST /facilities</code> - создание</li>
+<li><code>GET /facilities</code> - получение всех объектов</li>
+<li><code>GET /facilities/{id}</code> - получение конкретного объекта</li>
+<li><code>PUT /facilities/{id}</code> - изменение конкретного объекта</li>
+<li><code>DELETE /facilities/{id}</code> - удаление конкретного объекта</li>
+</ul>
+<p>Модель данных объекта:</p>
+<pre><code class="language-json">{
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Main&quot;,
+    &quot;_longitude&quot;: 89.0,
+    &quot;_latitude&quot;: 89.0
+}
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

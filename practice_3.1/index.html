@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Практика 3.1 - Lab 3</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Lab 3</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Общая информация</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../CRUD_endpoints/" class="nav-link">CRUD</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Domain/" class="nav-link">Домен</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Model/" class="nav-link">Модель</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Statistics/" class="nav-link">Statistics</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Практика 3.1</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../practice_3.2/" class="nav-link">Практика 3.2</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Statistics/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../practice_3.2/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#31" class="nav-link">Практика 3.1</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#1" class="nav-link">Задача 1</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">Модель</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Запросы</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#2" class="nav-link">Задача 2</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#toyota" class="nav-link">Выведете все машины марки “Toyota”</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#1_1" class="nav-link">Найти всех водителей с именем “1”</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#id-id" class="nav-link">Взяв любого случайного владельца получить его id, и по этому id получить экземпляр удостоверения в виде объекта модели</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_21" class="nav-link">Вывести всех владельцев черных машин</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#2023" class="nav-link">Найти всех владельцев, чей год владения машиной начинается с 2023</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#3" class="nav-link">Задача 3</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_26" class="nav-link">Вывод даты выдачи самого старшего водительского удостоверения</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#-" class="nav-link">Укажите самую позднюю дату владения машиной, имеющую какую-то из существующих моделей в вашей базе</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_31" class="nav-link">Выведите количество машин для каждого водителя</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_34" class="nav-link">Подсчитайте количество машин каждой марки</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_37" class="nav-link">Отсортируйте всех автовладельцев по дате выдачи удостоверения</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="31">Практика 3.1</h1>
+<h1 id="1">Задача 1</h1>
+<h2 id="_1">Модель</h2>
+<p>Модель была взята из предыдущей практической работы</p>
+<pre><code class="language-python">from django.db import models
+
+
+class Car(models.Model):
+    license_plate = models.CharField(max_length=15)
+    brand = models.CharField(max_length=20)
+    model = models.CharField(max_length=20)
+    color = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f&quot;Car(license_plate={self.license_plate}, brand={self.brand}, model={self.model}, color={self.color})&quot;
+
+
+class CarOwner(models.Model):
+    first_name = models.CharField(max_length=30, null=True)
+    last_name = models.CharField(max_length=30, null=True)
+    birth_date = models.DateTimeField(null=True)
+    passport = models.CharField(max_length=10, null=True)
+    home_Address = models.CharField(max_length=200, null=True)
+    nationality = models.CharField(max_length=100, null=True)
+    owner = models.ManyToManyField(Car, through='Ownership')
+
+    def __str__(self):
+        return f&quot;CarOwner(first_name={self.first_name}, last_name={self.last_name}, birth_date={self.birth_date}, &quot; \
+               f&quot;passport={self.passport}, home_Address={self.home_Address}, nationality={self.nationality})&quot;
+
+
+class Ownership(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
+    owner = models.ForeignKey(CarOwner, on_delete=models.DO_NOTHING)
+    date_start = models.DateTimeField()
+    date_end = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return f&quot;Ownership(car={self.car}, owner={self.owner}, date_start={self.date_start}, date_end={self.date_end})&quot;
+
+
+class DriverLicense(models.Model):
+    owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    number = models.CharField(max_length=10)
+    license_type = models.CharField(max_length=10)
+    issue_date = models.DateTimeField()
+
+    def __str__(self):
+        return f&quot;DriverLicense(owner={self.owner}, number={self.number}, license_type={self.license_type}, issue_date={self.issue_date})&quot;
+
+</code></pre>
+<h2 id="_2">Запросы</h2>
+<h3 id="_3">Автовладельцы</h3>
+<h4 id="_4">Скрипт</h4>
+<pre><code class="language-python">owner1 = CarOwner.objects.create(first_name=&quot;1&quot;, last_name=&quot;1&quot;, birth_date=datetime.datetime.now(), passport=&quot;1&quot;, home_Address=&quot;1&quot;, nationality=&quot;1&quot;)
+owner2 = CarOwner.objects.create(first_name=&quot;2&quot;, last_name=&quot;2&quot;, birth_date=datetime.datetime.now(), passport=&quot;2&quot;, home_Address=&quot;2&quot;, nationality=&quot;2&quot;)
+owner3 = CarOwner.objects.create(first_name=&quot;3&quot;, last_name=&quot;3&quot;, birth_date=datetime.datetime.now(), passport=&quot;3&quot;, home_Address=&quot;3&quot;, nationality=&quot;3&quot;)
+owner4 = CarOwner.objects.create(first_name=&quot;4&quot;, last_name=&quot;4&quot;, birth_date=datetime.datetime.now(), passport=&quot;4&quot;, home_Address=&quot;4&quot;, nationality=&quot;4&quot;)
+owner5 = CarOwner.objects.create(first_name=&quot;5&quot;, last_name=&quot;5&quot;, birth_date=datetime.datetime.now(), passport=&quot;5&quot;, home_Address=&quot;5&quot;, nationality=&quot;5&quot;)
+owner6 = CarOwner.objects.create(first_name=&quot;6&quot;, last_name=&quot;6&quot;, birth_date=datetime.datetime.now(), passport=&quot;6&quot;, home_Address=&quot;6&quot;, nationality=&quot;6&quot;)
+</code></pre>
+<h4 id="_5">Вывод</h4>
+<pre><code>&gt;&gt;&gt; CarOwner.objects.all()
+&lt;QuerySet [&lt;CarOwner: CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, passport=1, home_Address=1, nationality=1)&gt;, &lt;CarOwner: CarOwner(first_name=2, last_
+name=2, birth_date=2023-11-24 20:58:29.691257+00:00, passport=2, home_Address=2, nationality=2)&gt;, &lt;CarOwner: CarOwner(first_name=3, last_name=3, birth_date=2023-11-24 20:58:29.701066+00:0
+0, passport=3, home_Address=3, nationality=3)&gt;, &lt;CarOwner: CarOwner(first_name=4, last_name=4, birth_date=2023-11-24 20:58:29.717073+00:00, passport=4, home_Address=4, nationality=4)&gt;, &lt;C
+arOwner: CarOwner(first_name=5, last_name=5, birth_date=2023-11-24 20:58:29.725866+00:00, passport=5, home_Address=5, nationality=5)&gt;, &lt;CarOwner: CarOwner(first_name=6, last_name=6, birth
+_date=2023-11-24 20:58:29.734116+00:00, passport=6, home_Address=6, nationality=6)&gt;]&gt;
+
+</code></pre>
+<h3 id="_6">Удостоверения</h3>
+<h4 id="_7">Скрипт</h4>
+<pre><code class="language-python">DriverLicense.objects.create(owner=owner1, number=&quot;1&quot;, license_type=&quot;B&quot;, issue_date=datetime.datetime.now())
+DriverLicense.objects.create(owner=owner2, number=&quot;2&quot;, license_type=&quot;B&quot;, issue_date=datetime.datetime.now())
+DriverLicense.objects.create(owner=owner3, number=&quot;3&quot;, license_type=&quot;B&quot;, issue_date=datetime.datetime.now())
+DriverLicense.objects.create(owner=owner4, number=&quot;4&quot;, license_type=&quot;B&quot;, issue_date=datetime.datetime.now())
+DriverLicense.objects.create(owner=owner5, number=&quot;5&quot;, license_type=&quot;B&quot;, issue_date=datetime.datetime.now())
+DriverLicense.objects.create(owner=owner6, number=&quot;6&quot;, license_type=&quot;B&quot;, issue_date=datetime.datetime.now())
+</code></pre>
+<h4 id="_8">Вывод</h4>
+<pre><code>&gt;&gt;&gt; DriverLicense.objects.all()
+&lt;QuerySet [&lt;DriverLicense: DriverLicense(owner=CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, passport=1, home_Address=1, nationality=1), number=1, licen
+se_type=B, issue_date=2023-11-24 21:01:49.146607+00:00)&gt;, &lt;DriverLicense: DriverLicense(owner=CarOwner(first_name=2, last_name=2, birth_date=2023-11-24 20:58:29.691257+00:00, passport=2,
+home_Address=2, nationality=2), number=2, license_type=B, issue_date=2023-11-24 21:01:49.193053+00:00)&gt;, &lt;DriverLicense: DriverLicense(owner=CarOwner(first_name=3, last_name=3, birth_date
+=2023-11-24 20:58:29.701066+00:00, passport=3, home_Address=3, nationality=3), number=3, license_type=B, issue_date=2023-11-24 21:01:49.208716+00:00)&gt;, &lt;DriverLicense: DriverLicense(owner
+=CarOwner(first_name=4, last_name=4, birth_date=2023-11-24 20:58:29.717073+00:00, passport=4, home_Address=4, nationality=4), number=4, license_type=B, issue_date=2023-11-24 21:01:49.2243
+37+00:00)&gt;, &lt;DriverLicense: DriverLicense(owner=CarOwner(first_name=5, last_name=5, birth_date=2023-11-24 20:58:29.725866+00:00, passport=5, home_Address=5, nationality=5), number=5, lice
+nse_type=B, issue_date=2023-11-24 21:01:49.224337+00:00)&gt;, &lt;DriverLicense: DriverLicense(owner=CarOwner(first_name=6, last_name=6, birth_date=2023-11-24 20:58:29.734116+00:00, passport=6,
+ home_Address=6, nationality=6), number=6, license_type=B, issue_date=2023-11-24 21:01:52.179825+00:00)&gt;]&gt;
+</code></pre>
+<h3 id="_9">Автомобили</h3>
+<h4 id="_10">Скрипт</h4>
+<pre><code class="language-python">car1 = Car.objects.create(license_plate=&quot;1&quot;, brand=&quot;Toyota&quot;, model=&quot;Camry&quot;, color=&quot;black&quot;)
+car2 = Car.objects.create(license_plate=&quot;2&quot;, brand=&quot;Toyota&quot;, model=&quot;Corolla&quot;, color=&quot;black&quot;)
+car3 = Car.objects.create(license_plate=&quot;3&quot;, brand=&quot;Lada&quot;, model=&quot;Vesta&quot;, color=&quot;black&quot;)
+car4 = Car.objects.create(license_plate=&quot;4&quot;, brand=&quot;Mitsubishi&quot;, model=&quot;Lancer&quot;, color=&quot;black&quot;)
+car5 = Car.objects.create(license_plate=&quot;5&quot;, brand=&quot;Honda&quot;, model=&quot;Civic&quot;, color=&quot;black&quot;)
+</code></pre>
+<h4 id="_11">Вывод</h4>
+<pre><code>&gt;&gt;&gt; Car.objects.all()
+&lt;QuerySet [&lt;Car: Car(license_plate=1, brand=Toyota, model=Camry, color=black)&gt;, &lt;Car: Car(license_plate=2, brand=Toyota, model=Corolla, color=black)&gt;, &lt;Car: Car(license_plate=3, brand=Lad
+a, model=Vesta, color=black)&gt;, &lt;Car: Car(license_plate=4, brand=Mitsubishi, model=Lancer, color=black)&gt;, &lt;Car: Car(license_plate=5, brand=Honda, model=Civic, color=black)&gt;]&gt;
+</code></pre>
+<h3 id="_12">Владение</h3>
+<h4 id="_13">Скрипт</h4>
+<pre><code class="language-python">ownership1 = Ownership.objects.create(owner=owner1, car=car1, date_start=datetime.datetime.now())
+ownership2 = Ownership.objects.create(owner=owner2, car=car2, date_start=datetime.datetime.now())
+ownership3 = Ownership.objects.create(owner=owner3, car=car3, date_start=datetime.datetime.now())
+ownership4 = Ownership.objects.create(owner=owner4, car=car4, date_start=datetime.datetime.now())
+ownership5 = Ownership.objects.create(owner=owner5, car=car5, date_start=datetime.datetime.now())
+ownership6 = Ownership.objects.create(owner=owner6, car=car5, date_start=datetime.datetime.now())
+</code></pre>
+<h3 id="_14">Вывод</h3>
+<pre><code>&gt;&gt;&gt; Ownership.objects.all()
+&lt;QuerySet [&lt;Ownership: Ownership(car=Car(license_plate=1, brand=Toyota, model=Camry, color=black), owner=CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, p
+assport=1, home_Address=1, nationality=1), date_start=2023-11-24 21:19:20.875803+00:00, date_end=None)&gt;, &lt;Ownership: Ownership(car=Car(license_plate=2, brand=Toyota, model=Corolla, color=
+black), owner=CarOwner(first_name=2, last_name=2, birth_date=2023-11-24 20:58:29.691257+00:00, passport=2, home_Address=2, nationality=2), date_start=2023-11-24 21:19:20.960060+00:00, dat
+e_end=None)&gt;, &lt;Ownership: Ownership(car=Car(license_plate=3, brand=Lada, model=Vesta, color=black), owner=CarOwner(first_name=3, last_name=3, birth_date=2023-11-24 20:58:29.701066+00:00,
+passport=3, home_Address=3, nationality=3), date_start=2023-11-24 21:19:20.960060+00:00, date_end=None)&gt;, &lt;Ownership: Ownership(car=Car(license_plate=4, brand=Mitsubishi, model=Lancer, co
+lor=black), owner=CarOwner(first_name=4, last_name=4, birth_date=2023-11-24 20:58:29.717073+00:00, passport=4, home_Address=4, nationality=4), date_start=2023-11-24 21:19:20.975719+00:00,
+ date_end=None)&gt;, &lt;Ownership: Ownership(car=Car(license_plate=5, brand=Honda, model=Civic, color=black), owner=CarOwner(first_name=5, last_name=5, birth_date=2023-11-24 20:58:29.725866+00
+:00, passport=5, home_Address=5, nationality=5), date_start=2023-11-24 21:19:20.975719+00:00, date_end=None)&gt;, &lt;Ownership: Ownership(car=Car(license_plate=5, brand=Honda, model=Civic, col
+or=black), owner=CarOwner(first_name=6, last_name=6, birth_date=2023-11-24 20:58:29.734116+00:00, passport=6, home_Address=6, nationality=6), date_start=2023-11-24 21:19:25.046156+00:00,
+date_end=None)&gt;]&gt;
+
+</code></pre>
+<h1 id="2">Задача 2</h1>
+<h2 id="toyota">Выведете все машины марки “Toyota”</h2>
+<h3 id="_15">Скрипт</h3>
+<pre><code class="language-python">Car.objects.filter(brand=&quot;Toyota&quot;)
+</code></pre>
+<h3 id="_16">Вывод</h3>
+<pre><code>&lt;QuerySet [&lt;Car: Car(license_plate=1, brand=Toyota, model=Camry, color=black)&gt;, &lt;Car: Car(license_plate=2, brand=Toyota, model=Corolla, color=black)&gt;]&gt;
+</code></pre>
+<h2 id="1_1">Найти всех водителей с именем “1”</h2>
+<h3 id="_17">Скрипт</h3>
+<pre><code class="language-python">CarOwner.objects.filter(first_name=&quot;1&quot;)
+</code></pre>
+<h3 id="_18">Вывод</h3>
+<pre><code>&lt;QuerySet [&lt;CarOwner: CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, passport=1, home_Address=1, nationality=1)&gt;]&gt;
+</code></pre>
+<h2 id="id-id">Взяв любого случайного владельца получить его id, и по этому id получить экземпляр удостоверения в виде объекта модели</h2>
+<h3 id="_19">Скрипт</h3>
+<pre><code class="language-python">desired_owner_id = CarOwner.objects.get(first_name=&quot;1&quot;).id
+DriverLicense.objects.get(owner__id=desired_owner_id)
+</code></pre>
+<h3 id="_20">Вывод</h3>
+<pre><code>&lt;DriverLicense: DriverLicense(owner=CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, passport=1, home_Address=1, nationality=1), number=1, license_type=B,
+issue_date=2023-11-24 21:01:49.146607+00:00)&gt;
+</code></pre>
+<h2 id="_21">Вывести всех владельцев черных машин</h2>
+<h3 id="_22">Скрипт</h3>
+<pre><code class="language-python">CarOwner.objects.filter(ownership__car__color=&quot;black&quot;)
+</code></pre>
+<h3 id="_23">Вывод</h3>
+<pre><code>&lt;QuerySet [&lt;CarOwner: CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, passport=1, home_Address=1, nationality=1)&gt;, &lt;CarOwner: CarOwner(first_name=2, last_
+name=2, birth_date=2023-11-24 20:58:29.691257+00:00, passport=2, home_Address=2, nationality=2)&gt;, &lt;CarOwner: CarOwner(first_name=3, last_name=3, birth_date=2023-11-24 20:58:29.701066+00:0
+0, passport=3, home_Address=3, nationality=3)&gt;, &lt;CarOwner: CarOwner(first_name=4, last_name=4, birth_date=2023-11-24 20:58:29.717073+00:00, passport=4, home_Address=4, nationality=4)&gt;, &lt;C
+arOwner: CarOwner(first_name=5, last_name=5, birth_date=2023-11-24 20:58:29.725866+00:00, passport=5, home_Address=5, nationality=5)&gt;, &lt;CarOwner: CarOwner(first_name=6, last_name=6, birth
+_date=2023-11-24 20:58:29.734116+00:00, passport=6, home_Address=6, nationality=6)&gt;]&gt;
+</code></pre>
+<h2 id="2023">Найти всех владельцев, чей год владения машиной начинается с 2023</h2>
+<h3 id="_24">Скрипт</h3>
+<pre><code class="language-python">CarOwner.objects.filter(driverlicense__issue_date__year=2023)
+</code></pre>
+<h3 id="_25">Вывод</h3>
+<pre><code>&lt;QuerySet [&lt;CarOwner: CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, passport=1, home_Address=1, nationality=1)&gt;, &lt;CarOwner: CarOwner(first_name=2, last_
+name=2, birth_date=2023-11-24 20:58:29.691257+00:00, passport=2, home_Address=2, nationality=2)&gt;, &lt;CarOwner: CarOwner(first_name=3, last_name=3, birth_date=2023-11-24 20:58:29.701066+00:0
+0, passport=3, home_Address=3, nationality=3)&gt;, &lt;CarOwner: CarOwner(first_name=4, last_name=4, birth_date=2023-11-24 20:58:29.717073+00:00, passport=4, home_Address=4, nationality=4)&gt;, &lt;C
+arOwner: CarOwner(first_name=5, last_name=5, birth_date=2023-11-24 20:58:29.725866+00:00, passport=5, home_Address=5, nationality=5)&gt;, &lt;CarOwner: CarOwner(first_name=6, last_name=6, birth
+_date=2023-11-24 20:58:29.734116+00:00, passport=6, home_Address=6, nationality=6)&gt;]&gt;
+</code></pre>
+<h1 id="3">Задача 3</h1>
+<h2 id="_26">Вывод даты выдачи самого старшего водительского удостоверения</h2>
+<h3 id="_27">Скрипт</h3>
+<pre><code class="language-python">from django.db.models import Min
+
+DriverLicense.objects.aggregate(earliest_date=Min(&quot;issue_date&quot;))
+</code></pre>
+<h3 id="_28">Вывод</h3>
+<pre><code>{'earliest_date': datetime.datetime(2023, 11, 24, 21, 1, 49, 146607, tzinfo=datetime.timezone.utc)}
+</code></pre>
+<h2 id="-">Укажите самую позднюю дату владения машиной, имеющую какую-то из существующих моделей в вашей базе</h2>
+<h3 id="_29">Скрипт</h3>
+<pre><code class="language-python">from django.db.models import Max
+
+Ownership.objects.aggregate(latest_ownership=Max(&quot;date_end&quot;))
+</code></pre>
+<h3 id="_30">Вывод</h3>
+<pre><code>{'latest_ownership': None}
+</code></pre>
+<h2 id="_31">Выведите количество машин для каждого водителя</h2>
+<h3 id="_32">Скрипт</h3>
+<pre><code class="language-python">from django.db.models import Count
+
+annotated = CarOwner.objects.annotate(Count(&quot;owner&quot;))
+for owner in annotated:
+    print(owner.first_name, owner.owner__count)
+</code></pre>
+<h3 id="_33">Вывод</h3>
+<pre><code>1 1
+2 1
+3 1
+4 1
+5 1
+6 1
+
+</code></pre>
+<h2 id="_34">Подсчитайте количество машин каждой марки</h2>
+<h3 id="_35">Скрипт</h3>
+<pre><code class="language-python">from django.db.models import Count
+
+Car.objects.values(&quot;brand&quot;).annotate(Count(&quot;id&quot;))
+</code></pre>
+<h3 id="_36">Вывод</h3>
+<pre><code>&lt;QuerySet [{'brand': 'Honda', 'id__count': 1}, {'brand': 'Lada', 'id__count': 1}, {'brand': 'Mitsubishi', 'id__count': 1}, {'brand': 'Toyota', 'id__count': 2}]&gt;
+</code></pre>
+<h2 id="_37">Отсортируйте всех автовладельцев по дате выдачи удостоверения</h2>
+<h3 id="_38">Скрипт</h3>
+<pre><code class="language-python">CarOwner.objects.order_by(&quot;driverlicense__issue_date&quot;)
+</code></pre>
+<h3 id="_39">Вывод</h3>
+<pre><code>&lt;QuerySet [&lt;CarOwner: CarOwner(first_name=1, last_name=1, birth_date=2023-11-24 20:56:30.905200+00:00, passport=1, home_Address=1, nationality=1)&gt;, &lt;CarOwner: CarOwner(first_name=2, last_
+name=2, birth_date=2023-11-24 20:58:29.691257+00:00, passport=2, home_Address=2, nationality=2)&gt;, &lt;CarOwner: CarOwner(first_name=3, last_name=3, birth_date=2023-11-24 20:58:29.701066+00:0
+0, passport=3, home_Address=3, nationality=3)&gt;, &lt;CarOwner: CarOwner(first_name=4, last_name=4, birth_date=2023-11-24 20:58:29.717073+00:00, passport=4, home_Address=4, nationality=4)&gt;, &lt;C
+arOwner: CarOwner(first_name=5, last_name=5, birth_date=2023-11-24 20:58:29.725866+00:00, passport=5, home_Address=5, nationality=5)&gt;, &lt;CarOwner: CarOwner(first_name=6, last_name=6, birth
+_date=2023-11-24 20:58:29.734116+00:00, passport=6, home_Address=6, nationality=6)&gt;]&gt;
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/jquery-3.6.0.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
